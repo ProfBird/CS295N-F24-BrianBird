@@ -1,2 +1,3 @@
 # CS295N-F24-BrianBird
-Temporary demo repository
+
+[Book Reivews](https://bookreviews-2024.azurewebsites.net/)&mdash;The web app running on Azure
