@@ -2,34 +2,40 @@
 @{
     ViewData["Title"] = "Review";
 }
-<div class="container">
-    <div class="bg-primary">This is a test</div>
-</div>
-<form method="post" class="container">
-    <div class="m-1 row bg-primary-subtle">
-        <label for="title" class="col-md-1 bg-primary">Title</label>
-        <input id="title" name="Book.Title" class="col-md-9 bg-primary"/>
+<h2 class="mb-3">Write a Book Review</h2>
+<form method="post">
+    <div class="row mb-1">
+        <label for="title" class="col-md-1" col-form-label>Title</label>
+        <div class="col-md-9">
+            <input id="title" name="Book.Title" class="col-md-9 form-control bg-primary-subtle"/>
+        </div>
     </div>
 
-    <div class="m-1 row">
-        <label for="author" class="col-md-1">Author</label>
-        <input id="author" name="Book.Author" class="col-md-9"/>
+    <div class="row mb-1">
+        <label for="author" class="col-md-1 col-form-label">Author</label>
+        <div class="col-md-9">
+            <input id="author" name="Book.Author" class="form-control bg-secondary-subtle"/>
+        </div>
     </div>
 
-    <div class="m-1 row">
-        <label for="reviewer" class="col-md-1">Reviewer</label>
-        <input id="reviewer" name="Reviewer.Name" class="col-md-9"/>
+    <div class="row mb-1">
+        <label for="reviewer" class="col-md-1 col-form-label">Reviewer</label>
+        <div class="col-md-9">
+            <input id="reviewer" name="Reviewer.Name" class="col-md-9 form-control bg-primary-subtle"/>
+        </div>
     </div>
 
-    <div class="m-1 row">
-        <label for="text" class="col-md-1">Review</label>
-        <textarea id="text" name="ReviewText" class="col-md-9"></textarea>
+    <div class="row">
+        <label for="text" class="col-md-1 col-form-label">Review</label>
+        <div class="col-md-9">
+            <textarea id="text" name="ReviewText" class="col-md-9 form-control bg-secondary-subtle"></textarea>
+        </div>
     </div>
-    
+
     <div class="m-1 row justify-content-end">
         <button type="submit" class="btn btn-primary col-md-2">Submit</button>
         <div class="col-md-2"></div> @* spaceer to push the button over *@
     </div>
 </form>
 
-
+@* The bg-primary-subtle and bg-secondary-subtle classes require Bootstrap 5.3 *@
