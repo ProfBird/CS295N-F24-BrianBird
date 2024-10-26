@@ -16,7 +16,6 @@ namespace BookReviews2024.Controllers
 
         public IActionResult Review()
         {
-
             return View(); 
         }
 
