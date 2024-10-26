@@ -1,22 +1,33 @@
 ﻿@model Review
 @{
-    ViewData["Title"] = "Books";
+    ViewData["Title"] = "Review";
 }
 
-<form method="post">
-    <label for="title">Title</label>
-    <input id="title" name="Book.Title" /><br />
+<form method="post" class="container">
+    <div class="m-1 row">
+        <label for="title" class="col-md-1">Title</label>
+        <input id="title" name="Book.Title" class="col-md-9"/>
+    </div>
 
-    <label for="author">Author</label>
-    <input id="author" name="Book.Author" /><br />
+    <div class="m-1 row">
+        <label for="author" class="col-md-1">Author</label>
+        <input id="author" name="Book.Author" class="col-md-9"/>
+    </div>
 
-    <label for="reviewer">Reviewer</label>
-    <input id="reviewer" name="Reviewer.Name" /><br />
+    <div class="m-1 row">
+        <label for="reviewer" class="col-md-1">Reviewer</label>
+        <input id="reviewer" name="Reviewer.Name" class="col-md-9"/>
+    </div>
 
-    <label for="text">Review</label>
-    <textarea id="text" name="ReviewText"></textarea><br />
-
-    <button type="submit">Submit</button>
+    <div class="m-1 row">
+        <label for="text" class="col-md-1">Review</label
+        <textarea id="text" name="ReviewText" class="col-md-9"></textarea>
+    </div>
+    
+    <div class="m-1 row justify-content-end">
+        <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+        <div class="col-md-2"></div> @* spaceer to push the button over *@
+    </div>
 </form>
 
 
