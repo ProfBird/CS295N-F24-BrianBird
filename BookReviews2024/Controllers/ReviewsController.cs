@@ -8,9 +8,11 @@ namespace BookReviews2024.Controllers
         public IActionResult Index()
         {
             // TODO: Get the review objects and put them into a list.
-            Review model = new Review();
-            model.Reviewer = new AppUser();
-            model.Book = new Book();
+            Review model = new Review
+            {
+                Reviewer = new AppUser(),
+                Book = new Book()
+            };
             return View(model);
         }
 
