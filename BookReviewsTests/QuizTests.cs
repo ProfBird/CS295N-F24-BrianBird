@@ -1,4 +1,4 @@
-using BookReviews2024.Quiz;
+using BookReviews2024.BookQuiz;
 
 namespace BookReviewsTests
 {

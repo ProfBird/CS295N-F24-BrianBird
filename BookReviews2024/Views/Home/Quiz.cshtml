@@ -1,0 +1,27 @@
+﻿@model Quiz
+
+<form method="post">
+    @*
+    @foreach (Question question in Model.Questions)
+    {
+        <p>@question.Q</p>
+        <input name="answer"/>
+    }
+    *@
+    @Model.Questions[0].Q <br />
+    <input name="answer1" value="@Model.Questions[0].UserA"/> 
+    @if(Model.Questions[0].UserA != "") 
+    @Model.Questions[0].isRight <br />
+
+    @Model.Questions[1].Q<br />
+    <input name="answer2" value="@Model.Questions[1].UserA" />
+    @if (Model.Questions[0].UserA != "")
+        @Model.Questions[1].isRight
+<br />
+    @Model.Questions[2].Q<br />
+    <input name="answer3" value="@Model.Questions[2].UserA" />
+    @if (Model.Questions[0].UserA != "")
+        @Model.Questions[2].isRight
+<br />
+    <input type="submit" />
+</form>
