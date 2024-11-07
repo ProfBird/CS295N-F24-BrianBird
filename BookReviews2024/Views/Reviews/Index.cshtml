@@ -1,0 +1,23 @@
+﻿@model Review
+@{
+ViewData["Title"] = "Reviews Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Reviews on this Site</h1>
+</div>
+<h2>The Latest Review</h2>
+@if( Model.ReviewText != null) {
+<p>
+    Title: @Model.Book.Title<br />
+    Author: @Model.Book.Author<br />
+    Reviewer: @Model.Reviewer.Name<br />
+    Review Date: @Model.ReviewDate<br />
+    Review: @Model.ReviewText
+</p>
+}
+else
+{
+<p>There is no review.</p>
+}
+<a href="/Reviews/Review">Write a Review</a>
