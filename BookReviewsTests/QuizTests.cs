@@ -4,55 +4,42 @@ namespace BookReviewsTests
 {
     public class QuizTests
     {
-        Quiz quiz = new Quiz();
-
-        public QuizTests() {
-            
+        private Quiz _quiz = new Quiz();
+        
+        [Fact]
+        public void CheckCorrectAnswer()
+        {
+            // Arrange
             Question q1 = new Question()
             {
                 Q = "Who is the author of Lord of the Rings?",
                 A = "J.R.R. Tolkien",
                 UserA = "J.R.R. Tolkien"
             };
-            quiz.Questions.Add(q1);
+            _quiz.Questions.Add(q1);
+                
+            // Act
+            bool isCorrect = _quiz.CheckAnswer(_quiz.Questions.Last());
+            // Assert
+            Assert.True(isCorrect);
+        }
 
+        [Fact]
+        public void CheckWrongAnswer()
+        {
+            // Arrange
             Question q2 = new Question()
             {
                 Q = "Who is the author of Lord of the Rings?",
                 A = "J.R.R. Tolkien",
                 UserA = "Ray Bradbury"
             };
-            quiz.Questions.Add(q2);
-        }
-
-        [Fact]
-        public void checkCorrectAnswer()
-        {
-            // Arrange is done in the constructor
-
+            _quiz.Questions.Add(q2);
+            
             // Act
-            bool isCorrect = quiz.CheckAnswer(quiz.Questions[0]);
-            // Assert
-            Assert.True(isCorrect);
-        }
-
-        [Fact]
-        public void checkWrongAnswer()
-        {
-            // Arrange is done in the constructor
-
-            // Act
-            bool isCorrect = quiz.CheckAnswer(quiz.Questions[1]);
+            bool isCorrect = _quiz.CheckAnswer(_quiz.Questions.Last());
             // Assert
             Assert.False(isCorrect);
-        }
-
-        [Fact]
-        public void checkNumberQuestions()
-        {
-            // Arrange is done in the constructor
-            // No act needed
-            Assert.Equal(2, quiz.Questions.Count);
         }
     }
 }
