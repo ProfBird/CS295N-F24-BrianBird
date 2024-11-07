@@ -45,19 +45,28 @@ namespace BookReviews2024.Controllers
         public IActionResult Quiz(string answer1, string answer2, string answer3)
         {
 
-            // TODO: check the answers and send results back to the view
+            // Check the answers and send results back to the view
             Quiz model = new Quiz();
-            Question q1 = model.Questions[0];
-            q1.UserA = answer1;
-            q1.isRight = model.checkAnswer(q1);
+            if (answer1 != null)
+            {
+                Question q1 = model.Questions[0];
+                q1.UserA = answer1;
+                q1.isRight = model.CheckAnswer(q1);
+            }
 
-            Question q2 = model.Questions[1];
-            q2.UserA = answer2;
-            q2.isRight = model.checkAnswer(q2);
+            if (answer2 != null)
+            {
+                Question q2 = model.Questions[1];
+                q2.UserA = answer2;
+                q2.isRight = model.CheckAnswer(q2);
+            }
 
-            Question q3 = model.Questions[2];
-            q3.UserA = answer3;
-            q3.isRight = model.checkAnswer(q3);
+            if (answer3 != null)
+            {
+                Question q3 = model.Questions[2];
+                q3.UserA = answer3;
+                q3.isRight = model.CheckAnswer(q3);
+            }
 
             return View(model);
         }

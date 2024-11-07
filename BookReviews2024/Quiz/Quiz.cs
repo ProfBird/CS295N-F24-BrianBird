@@ -33,9 +33,9 @@ namespace BookReviews2024.BookQuiz
         public List<Question> Questions {
             get { return _questions; }
         }
-        public bool checkAnswer(Question q)
+        public bool CheckAnswer(Question q)
         {
-            return q.UserA == q.A;
+            return q.UserA.ToLower() == q.A.ToLower();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace BookReviewsTests
             // Arrange is done in the constructor
 
             // Act
-            bool isCorrect = quiz.checkAnswer(quiz.Questions[0]);
+            bool isCorrect = quiz.CheckAnswer(quiz.Questions[0]);
             // Assert
             Assert.True(isCorrect);
         }
@@ -42,7 +42,7 @@ namespace BookReviewsTests
             // Arrange is done in the constructor
 
             // Act
-            bool isCorrect = quiz.checkAnswer(quiz.Questions[1]);
+            bool isCorrect = quiz.CheckAnswer(quiz.Questions[1]);
             // Assert
             Assert.False(isCorrect);
         }
