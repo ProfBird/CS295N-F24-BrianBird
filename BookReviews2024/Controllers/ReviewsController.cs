@@ -1,19 +1,24 @@
-﻿using BookReviews2024.Models;
+﻿using BookReviews2024.Data;
+using BookReviews2024.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookReviews2024.Controllers
 {
     public class ReviewsController : Controller
     {
+        // private instance variable
+        IReviewRepository repo;
+
+        // constructor
+        public ReviewsController(IReviewRepository r)
+        {
+            repo = r;
+        }
+
         public IActionResult Index()
         {
-            // TODO: Get the review objects and put them into a list.
-            Review model = new Review
-            {
-                Reviewer = new AppUser(),
-                Book = new Book()
-            };
-            return View(model);
+                var reviews = repo.GetReviews();
+                return View(reviews);
         }
 
         public IActionResult Review()
@@ -25,7 +30,8 @@ namespace BookReviews2024.Controllers
         public IActionResult Review(Review model)
         {
             model.ReviewDate = DateTime.Now;  // Add date and time to the model
-            return View("Index", model);
+            repo.StoreReview(model);
+            return RedirectToAction("Index");
         }
     }
 }
