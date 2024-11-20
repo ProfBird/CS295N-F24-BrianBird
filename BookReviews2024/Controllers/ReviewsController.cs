@@ -30,8 +30,15 @@ namespace BookReviews2024.Controllers
         public IActionResult Review(Review model)
         {
             model.ReviewDate = DateTime.Now;  // Add date and time to the model
-            repo.StoreReview(model);
-            return RedirectToAction("Index");
+            if (repo.StoreReview(model) > 0)
+            {
+                return RedirectToAction("Index", new { reviewId = model.ReviewId });
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "There was an error saving the review.";
+                return View();
+            }
         }
     }
 }
