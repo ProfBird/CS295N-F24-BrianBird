@@ -11,22 +11,7 @@ namespace BookReviews2024.Data
         {
             context = appDbContext;
         }
-
-        // TODO: Find out how to add this to the interface
-        /*
-        public IQueryable<Review> Reviews
-        {
-            get
-            {
-                // Get all the Review objects in the Reviews DbSet
-                // and include the Reivewer object in each Review.
-
-                return context.Reviews
-                    .Include(review => review.Reviewer)
-                    .Include(review => review.Book); 
-            }
-        }
-        */
+        
         public List<Review> GetReviews()
         {
             var reveiws = context.Reviews
@@ -49,10 +34,9 @@ namespace BookReviews2024.Data
         public int StoreReview(Review model)
         {
             model.ReviewDate = DateTime.Now;
-            model.Book.Publisher = ""; // TODO: Add this to the form
+            model.Book.Publisher = ""; // TODO: Add a field for this to the form
             context.Reviews.Add(model);
-            return context.SaveChanges();
-            // returns a positive value if succussful
+            return context.SaveChanges();  // returns a positive value if succussful
         }
 
     }

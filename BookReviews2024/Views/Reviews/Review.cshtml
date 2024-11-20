@@ -1,7 +1,10 @@
-﻿@model Review
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model Review
 @{
     ViewData["Title"] = "Review";
 }
+<span>@ViewBag.ErrorMessage</span>
+
 <h2 class="mb-3">Write a Book Review</h2>
 <form method="post">
     <div class="row mb-1">
