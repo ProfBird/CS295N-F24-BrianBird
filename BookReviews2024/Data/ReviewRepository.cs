@@ -17,7 +17,7 @@ namespace BookReviews2024.Data
         {
             var reveiws = context.Reviews
               .Include(review => review.Reviewer) // returns Reivew.AppUser object
-              .Include(review => review.Book) // returns Review.Book object
+              .Include(review => review.ReviewedBook) // returns Review.Book object
               .ToList<Review>();
             return reveiws;
         }
@@ -26,7 +26,7 @@ namespace BookReviews2024.Data
         {
             var review = context.Reviews
               .Include(review => review.Reviewer) // returns Reivew.AppUser object
-              .Include(review => review.Book) // returns Review.Book object
+              .Include(review => review.ReviewedBook) // returns Review.Book object
               .Where(review => review.ReviewId == id)
               .SingleOrDefault();
             return review;
@@ -35,7 +35,7 @@ namespace BookReviews2024.Data
         public int StoreReview(Review model)
         {
             model.ReviewDate = DateTime.Now;
-            model.Book.Publisher = ""; // TODO: Add this to the form
+            model.ReviewedBook.Publisher = ""; // TODO: Add this to the form
             context.Reviews.Add(model);
             return context.SaveChanges();
             // returns a positive value if succussful

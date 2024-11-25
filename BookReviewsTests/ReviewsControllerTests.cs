@@ -29,8 +29,8 @@ namespace BookReviewsTests
 
             // act
             _review.Reviewer = new AppUser();
-            _review.Book = new Book();
-            var result = _controller.Review(new Review());
+            _review.ReviewedBook = new Book();
+            var result = _controller.Review(_review);
 
             // assert: check to see if I got a RedirectToActionResult
             Assert.True(result.GetType() == typeof(RedirectToActionResult));
