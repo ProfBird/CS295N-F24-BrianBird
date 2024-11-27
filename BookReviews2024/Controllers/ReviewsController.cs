@@ -21,6 +21,17 @@ namespace BookReviews2024.Controllers
                 return View(reviews);
         }
 
+        public IActionResult Filter(string reviewer, string date)
+
+        {DateOnly reviewDate = new DateOnly();
+                reviewDate = DateTime.Parse(date).Date;
+            var reviews = repo.GetReviews()
+                .Where(r => r.Reviewer.Name == reviewer|| reviewer == null
+                           && 
+                .ToList();
+            return View("Index", reviews);
+        }
+
         public IActionResult Review()
         {
             return View(); 

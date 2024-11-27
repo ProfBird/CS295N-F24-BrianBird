@@ -6,7 +6,16 @@
 <div class="text-center">
     <h1 class="display-4">Reviews on this Site</h1>
 </div>
-<h2>The Latest Review</h2>
+Filter the list of reviews:
+<form method="post" action="/Reviews/Filter">
+    <label name="reviewer">Reviewer</label><br />
+    <input name="reviewer"/><br />
+    <label name="date">Date</label><br />
+    <input name="date" /><br />
+    <button type="submit">Submit</button>
+</form>
+
+<h2>The List of Reviews</h2>
 @if (Model.Count != 0)
 {
     foreach (Review review in Model)
