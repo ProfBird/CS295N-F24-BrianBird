@@ -34,7 +34,6 @@ namespace BookReviews2024.Data
 
         public int StoreReview(Review model)
         {
-            model.ReviewDate = DateTime.Now;
             model.ReviewedBook.Publisher = ""; // TODO: Add this to the form
             context.Reviews.Add(model);
             return context.SaveChanges();

@@ -6,6 +6,6 @@
         public Book ReviewedBook { get; set; }
         public AppUser Reviewer { get; set; }
         public string ReviewText { get; set; }
-        public DateTime ReviewDate { get; set; }
+        public DateOnly ReviewDate { get; set; }
     }
 }

@@ -22,13 +22,15 @@ namespace BookReviews2024.Controllers
         }
 
         public IActionResult Filter(string reviewer, string date)
-
-        {DateOnly reviewDate = new DateOnly();
-                reviewDate = DateTime.Parse(date).Date;
+        {
             var reviews = repo.GetReviews()
-                .Where(r => r.Reviewer.Name == reviewer|| reviewer == null
-                           && 
+                .Where(r => reviewer == null || r.Reviewer.Name == reviewer)
+                .Where(r => date == null || r.ReviewDate ==  DateOnly.Parse(date))
                 .ToList();
+/*
+            var reviews = repo.GetReviews()
+                .Where(r => r.Reviewer.Name == reviewer|| reviewer == null)
+                .ToList();*/
             return View("Index", reviews);
         }
 
@@ -40,7 +42,7 @@ namespace BookReviews2024.Controllers
         [HttpPost]
         public IActionResult Review(Review model)
         {
-            model.ReviewDate = DateTime.Now;  // Add date and time to the model
+            model.ReviewDate = DateOnly.FromDateTime(DateTime.Today);  // Add date and time to the model
             if (repo.StoreReview(model) > 0)
             {
                 return RedirectToAction("Index", new { reviewId = model.ReviewId });
