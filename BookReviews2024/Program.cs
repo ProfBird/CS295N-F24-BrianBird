@@ -6,9 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
+var userId = builder.Configuration["ConnectionStrings:MySqlUserId"];
+var password = builder.Configuration["ConnectionStrings:MySqlPassword"];
+var baseConnection = builder.Configuration.GetConnectionString("MySqlConnection");
+var fullConnectionString = $"{baseConnection}userid={userId};password={password};";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseMySql(fullConnectionString, ServerVersion.AutoDetect(fullConnectionString)));
 builder.Services.AddTransient<IReviewRepository, ReviewRepository>();
 
 var app = builder.Build();
