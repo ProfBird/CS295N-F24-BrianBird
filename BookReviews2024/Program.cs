@@ -1,3 +1,4 @@
+#define SQLITE  // To use SQLite, change #undef to #define. MySQL is the default.
 using BookReviews2024.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,14 +7,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+#if SQLITE
+var connectionString = builder.Configuration.GetConnectionString("SqliteConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(connectionString));
+#else
 var userId = builder.Configuration["ConnectionStrings:MySqlUserId"];
 var password = builder.Configuration["ConnectionStrings:MySqlPassword"];
 var baseConnection = builder.Configuration.GetConnectionString("MySqlConnection");
 var fullConnectionString = $"{baseConnection}userid={userId};password={password};";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(fullConnectionString, ServerVersion.AutoDetect(fullConnectionString)));
-builder.Services.AddTransient<IReviewRepository, ReviewRepository>();
+#endif
 
+builder.Services.AddTransient<IReviewRepository, ReviewRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
