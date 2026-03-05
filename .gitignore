@@ -436,3 +436,9 @@ atlassian-ide-plugin.xml
 # Editor-based Rest Client
 .idea/httpRequests
 
+/BookReviews2024/Data
+/BookReviews2024/Migrations/20260303023740_SQLiteInitial.cs
+/BookReviews2024/Migrations/20260303023740_SQLiteInitial.Designer.cs
+/BookReviews2024/Migrations/20260304223550_SQLite_Initial.cs
+/BookReviews2024/Migrations/20260304223550_SQLite_Initial.Designer.cs
+/BookReviews2024/Migrations/ApplicationDbContextModelSnapshot.cs
