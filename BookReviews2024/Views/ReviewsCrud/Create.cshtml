@@ -1,0 +1,67 @@
+﻿@model BookReviews2024.Models.Review
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Review</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ReviewText" class="control-label"></label>
+                <input asp-for="ReviewText" class="form-control" />
+                <span asp-validation-for="ReviewText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReviewDate" class="control-label"></label>
+                <input asp-for="ReviewDate" class="form-control" />
+                <span asp-validation-for="ReviewDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reviewer.Name" class="control-label"></label>
+                <input asp-for="Reviewer.Name" class="form-control" />
+                <span asp-validation-for="Reviewer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReviewedBook.Title" class="control-label"></label>
+                <input asp-for="ReviewedBook.Title" class="form-control" />
+                <span asp-validation-for="ReviewedBook.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReviewedBook.Publisher" class="control-label"></label>
+                <input asp-for="ReviewedBook.Publisher" class="form-control" />
+                <span asp-validation-for="ReviewedBook.Publisher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReviewedBook.Author" class="control-label"></label>
+                <input asp-for="ReviewedBook.Author" class="form-control" />
+                <span asp-validation-for="ReviewedBook.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

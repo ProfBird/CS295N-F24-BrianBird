@@ -17,7 +17,7 @@ var password = builder.Configuration["ConnectionStrings:MySqlPassword"];
 var baseConnection = builder.Configuration.GetConnectionString("MySqlConnection");
 var fullConnectionString = $"{baseConnection}userid={userId};password={password};";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(fullConnectionString, ServerVersion.AutoDetect(fullConnectionString)));
+    options.UseMySQL(fullConnectionString));
 #endif
 
 builder.Services.AddTransient<IReviewRepository, ReviewRepository>();
